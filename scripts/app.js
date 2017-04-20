@@ -11,6 +11,10 @@ Yike.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: './views/older.html',
 		controller: 'OlderController'
 	})
+	.when('/author',{
+		templateUrl:'./views/author.html',
+		controller:'AuthorController'
+	})
 	.otherwise({
 		redirectTo: '/today'
 	});

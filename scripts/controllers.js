@@ -11,7 +11,11 @@ angular.module('Controllers', [])
 	// 导航数据
 	$scope.navs = [
 		{link: '#/today', text: '今日一刻', icon: 'icon-home'},
-		{link: '#/older', text: '往期内容', icon: 'icon-file-empty'}
+		{link: '#/older', text: '往期内容', icon: 'icon-file-empty'},
+		{link: '#/author', text: '热门作者', icon: 'icon-pencil'},
+		{link: '#/category', text: '栏目的浏览', icon: 'icon-menu'},
+		{link: '#/favourite', text: '我的喜欢', icon: 'icon-heart'},
+		{link: '#/settings', text: '设置', icon: 'icon-cog'},
 	];
 }])
 
@@ -55,9 +59,24 @@ angular.module('Controllers', [])
 
 		$rootScope.loaded = true;
 
-		console.log(info);
+		//console.log(info);
 
 		$scope.date = info.date;
 		$scope.posts = info.posts;
 	});
+}])
+//热门作者
+.controller('AuthorController',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+	$rootScope.index=2;
+	$rootScope.title='热门作者';
+	$http({
+		url:'./api/author.php'
+	}).success(function(info){
+		console.log(info);
+		$rootScope.loaded = true;
+
+		$scope.rec = info.rec;
+		$scope.all = info.all;
+	})
+
 }])
